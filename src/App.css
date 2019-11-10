@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
 #phase {
   white-space: nowrap;
   overflow: hidden;
@@ -19,6 +20,10 @@ body {
 
 #months {
   display: flex;
+}
+
+.phases {
+  font-size: 7vh;
 }
 
 #months {
