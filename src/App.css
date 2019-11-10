@@ -1,22 +1,26 @@
-.App {
-  text-align: center;
+#date, #time {
+	text-align: center;
+	font-size: 22vh;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#phase {
+  white-space: nowrap;
+  overflow: hidden;
+}
+#phase img {
+  display: inline-block;
+  width: 25vh;
 }
 
-.App-link {
-  color: #09d3ac;
+#months {
+  display: flex;
+}
+
+#months {
+  font-size: 11vh;
 }
