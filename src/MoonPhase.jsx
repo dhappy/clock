@@ -12,12 +12,25 @@ export const MoonPhase = (props) => {
 
   console.log("SE", start, end)
 
+  let delta = (end.getTime() - start.getTime()) / 1000
+  let months = delta / (2.55 * Math.pow(10, 6))
+
+  console.log("DM", delta, months)
+
   return (
     <div class='phases'>
-      {for(let i = 0; end.getTime() )}
-      <span>🌑</span>
-      <span>🌓</span>
-      <span>🌕</span>
+      {months.map((_, i) => (
+        switch(i % 4) {
+          case 0: <span>'🌑'</span>
+          case 1: <span>🌓</span>
+          case 2: <span>🌕</span>
+          case 3: <span>🌗</span>
+        }
+      )
+
+
+          }
+        }
       <span>🌗</span>
     </div>
   )
