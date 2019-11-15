@@ -1,34 +1,19 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
 import { Fecha as DateTime } from './Date'
 import { MoonPhase } from './MoonPhase'
+import { ZodiacMonth } from './ZodiacMonth'
+import { Building } from './Building'
 
 function App() {
   return (
     <div className="App">
-		<DateTime />
-    <MoonPhase start='2020/1/21' end='2021/1/20'/>
-    <div id='phase'>
-      <img src='.../moon/phase/0/svg.svg'/>
-      <img src='.../moon/phase/2/svg.svg'/>
-      <img src='.../moon/phase/4/svg.svg'/>
-      <img src='.../moon/phase/6/svg.svg'/>
-      <div id='months'>
-        <span title='Capricorn'>♑</span>
-        <span title='Aquarius'>♒</span>
-        <span title='Pisces'>♓</span>
-        <span title='Aries'>♈</span>
-        <span title='Taurus'>♉</span>
-        <span title='Gemini'>♊</span>
-        <span title='Cancer'>♋</span>
-        <span title='Leo'>♌</span>
-        <span title='Virgo'>♍</span>
-        <span title='Libra'>♎</span>
-        <span title='Scorpio'>♏</span>
-        <span title='Ophiuchus'>⛎</span>
-        <span title='Sagittarius'>♐</span>
+      <Building />
+      <DateTime />
+      <div className='center'>
+        <MoonPhase start='2020/1/21' end='2021/1/20'/>
+        <ZodiacMonth />
       </div>
-    </div>
     </div>
   );
 }

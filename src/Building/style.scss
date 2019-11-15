@@ -1,0 +1,28 @@
+body { background-color: ivory }
+
+table {
+  display: flex;
+
+  tr {
+    display: grid;
+    grid-template-columns: 5em auto;
+    width: 50%;
+  }
+
+  .rune {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .name {
+    grid-column: 2 / end;
+    grid-row: 1 / 2;
+
+    text-align: center;
+  }
+
+  .desc {
+    grid-column: 2 / end;
+    grid-row: 2 / 3;
+  }
+}

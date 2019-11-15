@@ -68,7 +68,7 @@ export class Fecha extends React.Component {
 			<div id="date">
 				<span id='year'>{this.state.year}</span>
 				/
-				<span id='month'>{this.state.month}</span>
+				<span id='month' title={this.state.title}>{this.state.month}</span>
 				/
 				<span id='day'>{this.state.day}</span>
   	  </div>

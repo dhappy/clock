@@ -11,23 +11,25 @@ export const MoonPhase = (props) => {
   console.log("SE", start, end)
 
   let delta = (end.getTime() - start.getTime()) / 1000
-  let quarters = new Array(Math.floor(
+  let months = (
     // Each month is 2.55ᴇ6s.
-    (delta / (2.55 * Math.pow(10, 6))) * 4
-  ))
-
-  quarters = [1,2,3,4,5,6,7,8,9,1,11,1,1,1,1,1,1,1,1,11,1,11,1,1,1,1]
+    delta / (2.55 * Math.pow(10, 6))
+  )
 
   return (
-    <div className='phases'>
-      {quarters.map((_, i) => {
-        switch(i % 4) {
-          case 0: return <span>🌑</span>
-          case 1: return <span>🌓</span>
-          case 2: return <span>🌕</span>
-          case 3: return <span>🌗</span>
+    <div id='phases'>
+      {Array.from(
+        //{length: Math.ceil(months * 4)},
+        {length: 12 * 4},
+        (_, i) => {
+          switch(i % 4) {
+            case 0: return <span>🌑</span>
+            case 1: return <span>🌓</span>
+            case 2: return <span>🌕</span>
+            case 3: return <span>🌗</span>
+          }
         }
-      })}
+      )}
     </div>
   )
 }

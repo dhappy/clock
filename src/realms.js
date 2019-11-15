@@ -1,0 +1,15 @@
+export default [
+  { rune: 'ᚦ', name: 'Jötunheimr', inhabitants: 'Giants' },
+  { rune: 'ᛗ', name: 'Miðgarðr', inhabitants: 'Humans' },
+  { rune: 'ᛁ', name: 'Niflheimr', inhabitants: 'Ice' },
+  { rune: 'ᚡ', name: 'Vanaheimr', inhabitants: 'Sages' },
+  { rune: 'ᛠ', name: 'Svartálfaheimr', inhabitants: 'Dwarves' },
+  { rune: 'ᛃ', name: 'Álfheimr', inhabitants: 'Elves' },
+  { rune: 'ᚫ', name: 'Ásgarðr', inhabitants: 'Heroes' },
+  { rune: 'ᛏ', name: 'Hel', inhabitants: 'Corpses' },
+  { rune: 'ᛊ', name: 'Múspellsheimr', inhabitants: 'Fire' },
+  { rune: '🌳', name: 'Yggdrasil', inhabitants: 'Non-Human Life' },
+  { rune: '🐲', name: 'Níðhöggr', inhabitants: 'Dragon who gnaws at Yggdrasil' },
+  { rune: '🐿️', name: 'Ratatoskr', inhabitants: 'Squirrel who lives in Yggdrasil' },
+  { rune: '🦅', name: 'Veðrfölnir', inhabitants: 'Hawk sitting on an eagle perched on Yggdrasil' },
+]
