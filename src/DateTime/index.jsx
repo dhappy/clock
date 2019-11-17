@@ -1,7 +1,8 @@
 import React from 'react'
 import months from '../zodiac'
+import './style.scss'
 
-export class Fecha extends React.Component {
+export class DateTime extends React.Component {
 	epoch = new Date(2021, 1, 20)
 
 	constructor(props) {
@@ -23,7 +24,7 @@ export class Fecha extends React.Component {
 	}
 
 	step = () => {
-		const now = new Date()
+		const now = this.props.time
 		let idx = 0
 		while(months.length > idx && now.getMonth() > months[idx].ends.getMonth()) {
 			// ToDo: Handle case where month is the same, but the day is too late

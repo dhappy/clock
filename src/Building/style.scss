@@ -1,28 +1,60 @@
 body { background-color: ivory }
 
-table {
-  display: flex;
+#building {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   tr {
     display: grid;
-    grid-template-columns: 5em auto;
-    width: 50%;
   }
 
   .rune {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+    font-size: 17em;
   }
 
   .name {
-    grid-column: 2 / end;
-    grid-row: 1 / 2;
-
     text-align: center;
   }
 
-  .desc {
-    grid-column: 2 / end;
-    grid-row: 2 / 3;
+  tr:nth-child(2n + 1) {
+    grid-template-columns: 1fr 12em;
+    .rune {
+      grid-column: 2 / end;
+      grid-row: 1 / 3;
+    }
+  
+    .name {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+  
+    .desc {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+  }
+
+  tr:nth-child(2n) {
+    grid-template-columns: 12em 1fr;
+    .rune {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+  
+    .name {
+      grid-column: 2 / end;
+      grid-row: 1 / 2;
+    }
+  
+    .desc {
+      grid-column: 2 / end;
+      grid-row: 2 / 3;
+    }
+  }
+}
+
+@media (max-width: 1028px) {
+  table {
+    grid-template-columns: 1fr;
   }
 }

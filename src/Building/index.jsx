@@ -32,12 +32,16 @@ export const Building = (props) => {
   }
 
   return <table>
-    {teams.map((team) => {
+    {teams.reverse().map((team) => {
       let space = spaces[spaceFor[team.rune]]
       if(space) { return <tr>
         <td className='rune'>{team.rune}</td>
-        <td className='name'>{team.name + (team.inhabitants ? ` (${team.inhabitants})` : '')}</td>
-        <td className='desc'><ReactMarkdown source={spaces[spaceFor[team.rune]]}/></td>
+        <td className='name'>
+          {team.name + (team.inhabitants ? ` (${team.inhabitants})` : '')}
+        </td>
+        <td className='desc'>
+          <ReactMarkdown source={spaces[spaceFor[team.rune]]}/>
+        </td>
       </tr> }
     })}
   </table>
