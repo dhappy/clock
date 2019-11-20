@@ -19,8 +19,9 @@ export const LunarYear = (props) => {
   return (
     <div id='phases'
       style={{
+        fontSize: '5vh',
         width: daysPerYear * pxPerDay,
-        marginLeft: -1 * days * pxPerDay,
+        marginLeft: `calc(${-1 * days * pxPerDay}px - 2.5vh)`,
       }}
     >
       {Array.from(

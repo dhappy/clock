@@ -1,6 +1,7 @@
 #date, #time {
 	text-align: center;
-	font-size: 22vh;
+  font-size: 22vh;
+  margin-top: -0.1em;
 }
 
 body {
@@ -18,8 +19,7 @@ body {
 }
 
 #phases {
-  width: 3588px;
-  font-size: 5vh;
+  border: 1px dashed black;
   display: flex;
 
   span {

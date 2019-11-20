@@ -26,8 +26,16 @@ export class DateTime extends React.Component {
 	step = () => {
 		const now = this.props.time
 		let idx = 0
-		while(months.length > idx && now.getMonth() > months[idx].ends.getMonth()) {
-			// ToDo: Handle case where month is the same, but the day is too late
+		while(
+			months.length > idx + 1
+			&& (
+				now.getMonth() > months[idx].end.getMonth()
+				|| (
+					now.getMonth() === months[idx].end.getMonth()
+					&& now.getDate() > months[idx].end.getDate()
+				)
+			)
+		) {
 			idx++
 		}
 		var currentSign = months[idx];
@@ -50,18 +58,16 @@ export class DateTime extends React.Component {
 			year: Math.ceil(
 				msecs / 1000 / 60 / 60 / 24 / 365.25
 			),
-			month: months.length - idx,
+			month: (months.length - idx) % months.length,
 			title: `${currentSign.symbol}: ${currentSign.name}`,
 			day: (
-				currentSign.ends.getDate()
+				currentSign.end.getDate()
 				- now.getDate()
 			),
 			hour: altHours,
 			minute: this.zeroPad(altMinutes),
 			second: this.zeroPad(Math.floor(altSeconds)),
 		})
-
-		window.requestAnimationFrame(this.step)
 	}
 
 	render = () => (

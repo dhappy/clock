@@ -20,13 +20,23 @@ export const ZodiacYear = (props) => {
   return (
     <div id='months'
       style={{
+        fontSize: '11vh',
         width: daysPerYear * pxPerDay,
-        marginLeft: -1 * days * pxPerDay,
+        marginLeft: `calc(${-1 * days * pxPerDay}px - 5.5vh)`,
       }}
     >
-      {months.map(month => (
-        <span title={month.name}>{month.symbol}</span>
-      ))}
+      {months.map(month => {
+        let len = (month.end.getTime() - month.start.getTime()) / 1000
+        let weight = len / year
+        return (
+          <span
+            title={month.name}
+            style={{flexGrow: weight * 100}}
+          >
+            {month.symbol}
+          </span>
+        )
+      })}
     </div>
   )
 }

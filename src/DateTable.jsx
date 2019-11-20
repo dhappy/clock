@@ -10,7 +10,7 @@ function percentThroughYear(time) {
 }
 
 function weight(month) {
-  let delta = (month.ends.getTime() - month.starts.getTime()) / 1000
+  let delta = (month.end.getTime() - month.start.getTime()) / 1000
   console.log('w', delta, year)
   return (delta / year) * 100
 }
@@ -29,8 +29,8 @@ export const DateTable = (props) => (
         <tr>
           <td>{month.name}</td>
           <td>{month.symbol}</td>
-          <td>{month.starts.toISOString()}</td>
-          <td>{percentThroughYear(month.starts)}</td>
+          <td>{month.start.toISOString()}</td>
+          <td>{percentThroughYear(month.start)}</td>
           <td>{weight(month)}</td>
         </tr>
       ))}
