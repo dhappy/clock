@@ -2,7 +2,7 @@ export default [
   {
     name: 'Capricorn',
     symbol: '♑',
-    start: new Date('2021/01/21 17:15'),
+    start: new Date('2021/01/20 17:15'),
     end: new Date('2021/02/16 17:47'),
   },
   {

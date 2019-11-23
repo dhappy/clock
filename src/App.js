@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './App.scss'
-import { DateTime } from './DateTime'
+import DateTime from './DateTime'
 import { LunarYear } from './LunarYear'
-import { ZodiacYear } from './ZodiacYear'
+import ZodiacYear from './ZodiacYear'
 import { Building } from './Building'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { DateTable } from './DateTable'
@@ -10,38 +10,26 @@ import { DateTable } from './DateTable'
 function App() {
   const [time, setTime] = useState(new Date())
 
-  // Arrow keys don't repeat
-  const [keydown, setKeydown] = useState(false)
-
-  const incrementOn = evt => {
-    let code = evt.keyCode
-
-    console.info('INC', keydown, code)
-
-    if(keydown) {
+  React.useEffect(function setupListener() {
+    let listener = evt => {
+      let code = evt.keyCode
       if(code < 37 || code > 40) {
         return
       }
-      let dir = 1
-      if(code >= 39) { dir = -1 }
-      if(code == 38 || code == 40) { dir *= 10 }
+      let dir = -1
+      if(code >= 39) { dir *= -1 }
+      if(code === 38 || code === 40) { dir *= 10 }
       setTime(new Date(
         time.getTime() + dir * (24 * 60 * 60 * 1000)
       ))
-      setTimeout(() => (incrementOn(evt)), 500)
     }
-  }
 
-  document.onkeydown = evt => {
-    setKeydown(true)
-    incrementOn(evt)
-    console.log('ee', keydown)
-  }
+    document.addEventListener('keydown', listener)
 
-  document.onkeyup = evt => {
-    setKeydown(false)
-    console.log('dd', keydown)
-  }
+    return () => {
+      document.removeEventListener('keydown', listener)
+    }
+  })
 
   return (
     <Router>
@@ -50,15 +38,15 @@ function App() {
         <Route path='/cal' component={DateTable} />
         <Route path='/' exact={true} render={() => (
           <React.Fragment>
-            <div style={{
-              position: 'absolute',
-              left: '50%',
-              border: '1px dashed black',
-              height: '95vh',
-            }} />
-            <div>{time.toISOString()}</div>
+            <div id='iso'>{time.toISOString()}</div>
             <DateTime time={time}/>
             <div className='center'>
+              <div style={{
+                position: 'absolute',
+                left: '50%',
+                border: '1px dashed black',
+                height: '45vh',
+              }} />
               <LunarYear time={time}/>
               <ZodiacYear time={time}/>
             </div>

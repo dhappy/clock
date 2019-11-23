@@ -16,6 +16,15 @@ export const LunarYear = (props) => {
     days = daysPerYear + days
   }
 
+  let phase = (idx) => {
+    switch(idx % 4) {
+      case 0: return '🌑'
+      case 1: return '🌓'
+      case 2: return '🌕'
+      default: return '🌗'
+    }
+  }
+
   return (
     <div id='phases'
       style={{
@@ -26,14 +35,9 @@ export const LunarYear = (props) => {
     >
       {Array.from(
         {length: 12 * 4},
-        (_, i) => {
-          switch(i % 4) {
-            case 0: return <span>🌑</span>
-            case 1: return <span>🌓</span>
-            case 2: return <span>🌕</span>
-            case 3: return <span>🌗</span>
-          }
-        }
+        (_, i) => (
+          <span key={i}>{phase(i % 4)}</span>
+        )
       )}
     </div>
   )

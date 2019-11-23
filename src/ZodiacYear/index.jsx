@@ -2,7 +2,7 @@ import React from 'react'
 import months from '../zodiac'
 import './style.scss'
 
-export const ZodiacYear = (props) => {
+export default (props) => {
   let now = props.time
   let epoch = new Date('2021-1-20')
   let delta = (now.getTime() - epoch.getTime()) / 1000
@@ -25,13 +25,14 @@ export const ZodiacYear = (props) => {
         marginLeft: `calc(${-1 * days * pxPerDay}px - 5.5vh)`,
       }}
     >
-      {months.map(month => {
+      {months.map((month, idx) => {
         let len = (month.end.getTime() - month.start.getTime()) / 1000
         let weight = len / year
         return (
           <span
             title={month.name}
             style={{flexGrow: weight * 100}}
+            key={idx}
           >
             {month.symbol}
           </span>
