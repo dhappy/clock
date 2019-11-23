@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.scss'
 import DateTime from './DateTime'
 import { LunarYear } from './LunarYear'
@@ -7,10 +7,32 @@ import { Building } from './Building'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { DateTable } from './DateTable'
 
+// https://css-tricks.com/using-requestanimationframe-with-react-hooks/#article-header-id-4
+const useAnimationFrame = callback => {
+  // Use useRef for mutable variables that we want to persist
+  // without triggering a re-render on their change
+  const requestRef = React.useRef()
+  const previousTimeRef = React.useRef()
+  
+  const animate = time => {
+    if(previousTimeRef.current != undefined) {
+      const deltaTime = time - previousTimeRef.current
+      callback(deltaTime)
+    }
+    previousTimeRef.current = time
+    requestRef.current = requestAnimationFrame(animate)
+  }
+  
+  React.useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(requestRef.current)
+  }, []) // Make sure the effect runs only once
+}
+
 function App() {
   const [time, setTime] = useState(new Date())
 
-  React.useEffect(function setupListener() {
+  useEffect(function setupListener() {
     let listener = evt => {
       let code = evt.keyCode
       if(code < 37 || code > 40) {
@@ -29,6 +51,10 @@ function App() {
     return () => {
       document.removeEventListener('keydown', listener)
     }
+  })
+
+  useAnimationFrame(deltaTime => {
+    setTime(oldTime => new Date(oldTime.getTime() + deltaTime))
   })
 
   return (
