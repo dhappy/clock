@@ -6,6 +6,7 @@ import ZodiacYear from './ZodiacYear'
 import { Building } from './Building'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { DateTable } from './DateTable'
+import EventList from './EventList'
 
 // https://css-tricks.com/using-requestanimationframe-with-react-hooks/#article-header-id-4
 const useAnimationFrame = callback => {
@@ -75,6 +76,7 @@ function App() {
               }} />
               <LunarYear time={time}/>
               <ZodiacYear time={time}/>
+              <EventList time={time}/>
             </div>
           </React.Fragment>
         )} />

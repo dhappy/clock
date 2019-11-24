@@ -27,7 +27,16 @@ export default (props) => {
 	}
 	var currentSign = months[idx]
 
-	let msecs = now.getTime() - epoch.getTime()
+	let delta = (now.getTime() - epoch.getTime()) / 1000
+	let year = Math.ceil(
+		delta / 60 / 60 / 24 / 365.2425
+	)
+	let month = (months.length - idx) % months.length
+	let title = `${currentSign.symbol}: ${currentSign.name}`
+	let day = (
+		currentSign.end.getDate()
+		- now.getDate()
+	)
 
 	// ToDo: Hours begin counting from sunrise. For simplcity's sake, everything is from sunrise at the American Meridian in Washington, DC January 20, 2021: 6:18ᴀᴍ.
 
@@ -41,18 +50,15 @@ export default (props) => {
 	let altMinutes = Math.floor(altSeconds / 100)
 	altSeconds -= altMinutes * 100
 
-	let year = Math.ceil(
-		msecs / 1000 / 60 / 60 / 24 / 365.2425
-	)
-	let month = (months.length - idx) % months.length
-	let title = `${currentSign.symbol}: ${currentSign.name}`
-	let day = (
-		currentSign.end.getDate()
-		- now.getDate()
-	)
 	let hour = altHours
 	let minute = zeroPad(altMinutes)
 	let second = zeroPad(Math.floor(altSeconds))
+
+	let daysPerYear = 365.2425
+  let perDay = 24 * 60 * 60 // name collision: ToDo: split
+  let perYear = daysPerYear * perDay
+  //let offset = delta % perYear
+  let days = Math.floor(delta / perDay)
 
 	return (
 		<React.Fragment>
@@ -64,11 +70,12 @@ export default (props) => {
 				<span id='day'>{day}</span>
   	  </div>
   		<div id='time'>
-				<span id='day'>{day}</span>
-				:
+				<span id='days'>{days}</span>
+				<span class='sep'>ᴅ</span>
 				<span id='hour'>{hour}</span>
+				<span class='sep'>:</span>
 				<span id='minute'>{minute}</span>
-				.
+				<span class='sep'>.</span>
 				<span id='second'>{second}</span>
 			</div>
 		</React.Fragment>
