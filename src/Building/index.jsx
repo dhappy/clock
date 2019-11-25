@@ -31,7 +31,7 @@ export const Building = (props) => {
     yellow: 'over-taxed',
   }
 
-  return <table>
+  return <table id='building'><tbody>
     {teams.reverse().map((team, idx) => {
       let space = spaces[spaceFor[team.rune]]
       if(space) {
@@ -46,5 +46,5 @@ export const Building = (props) => {
         </tr>
       }
     })}
-  </table>
+  </tbody></table>
 }

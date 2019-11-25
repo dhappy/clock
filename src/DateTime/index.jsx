@@ -11,7 +11,7 @@ export default (props) => {
 		return len > 0 ? new Array(len).join('0') + nr : nr
 	}
 
-	const now = props.time
+	const now = props.time || new Date()
 	let idx = 0
 	while(
 		months.length > idx + 1
@@ -71,11 +71,11 @@ export default (props) => {
   	  </div>
   		<div id='time'>
 				<span id='days'>{days}</span>
-				<span class='sep'>ᴅ</span>
+				<span className='sep'>ᴅ</span>
 				<span id='hour'>{hour}</span>
-				<span class='sep'>:</span>
+				<span className='sep'>:</span>
 				<span id='minute'>{minute}</span>
-				<span class='sep'>.</span>
+				<span className='sep'>.</span>
 				<span id='second'>{second}</span>
 			</div>
 		</React.Fragment>

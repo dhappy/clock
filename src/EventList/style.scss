@@ -1,6 +1,11 @@
-object {
-  width: 15vh;
-  border: 3px solid darkslateblue;
-  background-color: #B85627;
-  border-radius: 7.5vh;
+.event {
+  display: inline-block;
+  width: 12vh;
+  height: 12vh;
+  border-radius: 12vh;
+  padding: 2vh;
+
+  object {
+    max-height: 12vh;
+  }
 }
