@@ -1,9 +1,3 @@
-#date, #time {
-	text-align: center;
-  font-size: 22vh;
-  margin-top: -0.1em;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -19,15 +13,9 @@ body {
 }
 
 #phases {
-  border: 1px dashed black;
   display: flex;
 
   span {
     flex-grow: 1;
   }
-}
-
-#iso {
-  text-align: center;
-  font-size: 5vh;
 }

@@ -57,25 +57,22 @@ export default (props) => {
 	let daysPerYear = 365.2425
   let perDay = 24 * 60 * 60 // name collision: ToDo: split
   let perYear = daysPerYear * perDay
-  //let offset = delta % perYear
   let days = Math.floor(delta / perDay)
 
 	return (
 		<React.Fragment>
-			<div id="date">
+			<div id="datetime">
 				<span id='year'>{year}</span>
-				/
+				<span className='sep'>–</span>
 				<span id='month' title={title}>{month}</span>
-				/
+				<span className='sep'>–</span>
 				<span id='day'>{day}</span>
-  	  </div>
-  		<div id='time'>
+				<span className='sep'>D</span>
 				<span id='days'>{days}</span>
-				<span className='sep'>ᴅ</span>
 				<span id='hour'>{hour}</span>
 				<span className='sep'>:</span>
 				<span id='minute'>{minute}</span>
-				<span className='sep'>.</span>
+				<span className='sep'>:</span>
 				<span id='second'>{second}</span>
 			</div>
 		</React.Fragment>

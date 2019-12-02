@@ -1,0 +1,21 @@
+.months {
+  margin: 0;
+  list-style: none;
+  display: block;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.icon {
+  border: .1rem solid darkslateblue;
+  padding: .25rem;
+
+  &:hover {
+    background-color: hotpink;
+  }
+}

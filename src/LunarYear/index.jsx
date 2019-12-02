@@ -1,7 +1,9 @@
 import React from 'react'
+import './style.scss'
 
-export const LunarYear = (props) => {
-  let now = props.time
+export default function LunarYear(props) {
+  const now = props.time
+  const setTime = props.setTime
   let epoch = new Date('2021-1-13')
   let delta = (now.getTime() - epoch.getTime()) / 1000
   let month = 2.55 * Math.pow(10, 6)
@@ -30,7 +32,7 @@ export const LunarYear = (props) => {
       style={{
         fontSize: '5vh',
         width: daysPerYear * pxPerDay,
-        marginLeft: `calc(${-1 * days * pxPerDay}px - 2.5vh)`,
+        marginLeft: `calc(${-1 * days * pxPerDay}px - 5vh)`,
       }}
     >
       {Array.from(

@@ -5,7 +5,12 @@
   border-radius: 12vh;
   padding: 2vh;
 
+  &:hover {
+    background-color: darkslategray;
+  }
+
   object {
     max-height: 12vh;
+    pointer-events: none;
   }
 }

@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DateTime from '../DateTime'
-import { LunarYear } from '../LunarYear'
-import ZodiacYear from '../ZodiacYear'
+import LunarYear from '../LunarYear'
+import Year from '../Year'
 import EventList from '../EventList'
+import './style.scss'
+import gregorian from '../gregorian'
+import zodiac from '../zodiac'
+import { motion } from "framer-motion"
 
 // https://css-tricks.com/using-requestanimationframe-with-react-hooks/#article-header-id-4
 const useAnimationFrame = callback => {
@@ -56,36 +60,16 @@ export default () => {
     }
   })
 
-  let downRef = React.useRef()
+  const onpan = (evt, info) => {
+    let dir = info.delta.x / Math.abs(info.delta.x)
+    if(info.delta.x === 0) dir = 0
 
-  React.useEffect(() => {
-    let listeners = {
-      mousedown: evt => {
-        console.debug('MD!!', downRef.current)
-        downRef.current = true
-      },
-      mouseup: evt => {
-        console.debug('MU!!', downRef.current)
-        downRef.current = false
-      },
-      mousemove: evt => {
-        console.debug('MM!!', downRef.current)
-        downRef.current = false
-      },
-    }
+    setTime(currTime => new Date(
+      currTime.getTime() + dir * (24 * 60 * 60 * 1000)
+    ))
+  }
 
-    for(let key in listeners) {
-      document.addEventListener(key, listeners[key])
-    }
-      
-    return () => {
-      for(let key in listeners) {
-        document.removeEventListener(key, listeners[key])
-      }
-    }
-  })
-
-  return <React.Fragment>
+  return <motion.div onPan={onpan}>
     <div id='iso'>{time.toISOString()}</div>
     <DateTime time={time}/>
     <div className='center'>
@@ -95,9 +79,10 @@ export default () => {
         border: '1px dashed black',
         height: '45vh',
       }} />
-      <LunarYear time={time}/>
-      <ZodiacYear time={time}/>
-      <EventList time={time}/>
+      <EventList time={time} setTime={setTime}/>
+      <Year months={zodiac} epoch={new Date('2021-1-20')} time={time} setTime={setTime}/>
+      <Year months={gregorian} epoch={new Date('2021-1-1')} time={time} setTime={setTime}/>
+      <LunarYear time={time} setTime={setTime}/>
     </div>
-  </React.Fragment>
+  </motion.div>
 }

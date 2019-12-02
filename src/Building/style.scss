@@ -1,6 +1,11 @@
 body { background-color: ivory }
 
-#building tbody {
+p {
+  font-size: 1rem;
+  margin-left: 1.5rem;
+}
+
+#hq tbody {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -10,10 +15,15 @@ body { background-color: ivory }
 
   .rune {
     font-size: 17em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .name {
     text-align: center;
+    font-size: 125%;
+    font-weight: bolder;
   }
 
   tr:nth-child(2n + 1) {
